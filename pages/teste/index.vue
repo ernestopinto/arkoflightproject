@@ -17,6 +17,7 @@
 </template>
 
 <script>
+
 export default {
   name: "index",
   data() {
@@ -29,13 +30,13 @@ export default {
   },
   async fetch() {
     let data = await this.$axios
-      .$get("/apiinfo");
+      .$get(process.env.API_INFO);
     this.apiInfo = data.data.api_version;
     this.message = data.message;
   },
   // this os after the DOM is ready...
   mounted() {
-
+    console.log(process.env.API_INFO)
   },
 };
 </script>

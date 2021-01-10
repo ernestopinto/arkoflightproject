@@ -26,6 +26,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -38,7 +39,7 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: 'https://jaipur-7lpbq.ondigitalocean.app'
+    BASE_URL: process.env.API_URL
   },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
