@@ -37,7 +37,9 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: 'https://jaipur-7lpbq.ondigitalocean.app'
+  },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
