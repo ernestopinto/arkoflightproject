@@ -13,7 +13,6 @@
       <br />
       <button @click="$fetch">Refresh</button>
     </div>
-    <p>cenas -> {{ cenas }}</p>
   </div>
 </template>
 
@@ -36,7 +35,7 @@ export default {
   },
   // this os after the DOM is ready...
   mounted() {
-    this.cenas = this.message + " !!";
+
   },
 };
 </script>
