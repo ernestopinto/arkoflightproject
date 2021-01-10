@@ -25,18 +25,22 @@ export default {
       ip: null,
       apiInfo: "",
       message: "",
-      cenas: 0
+      cenas: 0,
     };
   },
+  async subscriptions() {},
   async fetch() {
-    let data = await this.$axios
-      .$get(process.env.API_INFO);
-    this.apiInfo = data.data.api_version;
-    this.message = data.message;
+    await this.$axios
+      .$get(process.env.API_INFO)
+      .then((response) => {
+        this.message = response.message;
+        this.apiInfo = response.data.api_version;
+      })
+      .catch((error) => {});
   },
   // this os after the DOM is ready...
-  mounted() {
-    console.log(process.env.API_INFO)
+  async asyncData() {
+    //
   },
 };
 </script>
