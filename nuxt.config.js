@@ -49,12 +49,13 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    proxy: true
+    BASE_URL: process.env.API_URL
   },
 
-  proxy: {
+  // case proxy needed
+  /*proxy: {
     '/api/': { target: process.env.API_URL, pathRewrite: {'^/api/': ''}, changeOrigin: true }
-  },
+  },*/
 
   //https://auth.nuxtjs.org/schemes/local
   auth: {
@@ -69,9 +70,9 @@ export default {
           autoFetch: true
         },
         endpoints: {
-          login: { url: '/api/login', method: 'post' },
-          logout: { url: '/api/logout', method: 'post' },
-          user: {url: '/api/user', method: 'get'}
+          login: { url: '/login', method: 'post' },
+          logout: { url: '/logout', method: 'post' },
+          user: {url: '/user', method: 'get'}
         },
         redirect: {
           login: '/login',
