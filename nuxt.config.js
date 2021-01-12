@@ -1,5 +1,7 @@
 export default {
 
+  ssr: false,
+
   // case deploying on local or award
   /*router: {
     base: '/arcadeluz/'
@@ -72,13 +74,9 @@ export default {
         endpoints: {
           login: { url: '/login', method: 'post' },
           logout: { url: '/logout', method: 'post' },
-          user: {url: '/user', method: 'get'}
+          user: {url: '/user', method: 'get' }
         },
-        redirect: {
-          login: '/login',
-          logout: '/',
-          home: '/dashboard'
-        },
+        watchLoggedIn: true
       }
     }
   },
