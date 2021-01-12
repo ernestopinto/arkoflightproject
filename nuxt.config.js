@@ -49,13 +49,13 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    /*proxy: true,*/
+    proxy: false,
     BASE_URL: process.env.API_URL
   },
 
-  /*proxy: {
+  proxy: {
     '/api/': { target: process.env.API_URL, pathRewrite: {'^/api/': ''}, changeOrigin: true }
-  },*/
+  },
 
   //https://auth.nuxtjs.org/schemes/local
   auth: {
