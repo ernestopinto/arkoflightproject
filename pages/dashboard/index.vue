@@ -22,7 +22,7 @@ export default {
   async fetch() {
   },
   async mounted() {
-    await this.$axios.$get('/api/user').then(r=>{
+    await this.$axios.$get(process.env.USER_INFO).then(r=>{
       this.user = r.data.user.name;
     }).catch(error => console.log(error))
   }
