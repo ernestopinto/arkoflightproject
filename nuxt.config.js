@@ -43,11 +43,43 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/auth-next',
+    '@nuxtjs/proxy',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    BASE_URL: process.env.API_URL
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': { target: process.env.API_URL, pathRewrite: {'^/api/': ''}, changeOrigin: true }
+  },
+
+  //https://auth.nuxtjs.org/schemes/local
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'data.access_token',
+          type: 'Bearer'
+        },
+        user: {
+          property: 'data.user',
+          autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/api/login', method: 'post' },
+          logout: { url: '/api/logout', method: 'post' },
+          user: {url: '/api/user', method: 'get'}
+        },
+        redirect: {
+          login: '/login',
+          logout: '/',
+          home: '/dashboard'
+        },
+      }
+    }
   },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
@@ -55,4 +87,11 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
+
+  //https://auth.nuxtjs.org/guide/setup
+  compilerOptions: {
+    "types": [
+      "@nuxtjs/auth-next",
+    ]
+  },
 }

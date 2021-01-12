@@ -31,12 +31,12 @@ export default {
   async subscriptions() {},
   async fetch() {
     await this.$axios
-      .$get(process.env.API_INFO)
-      .then((response) => {
-        this.message = response.message;
-        this.apiInfo = response.data.api_version;
-      })
-      .catch((error) => {});
+        .$get(process.env.API_INFO)
+        .then((response) => {
+          this.message = response.message;
+          this.apiInfo = response.data.api_version;
+        })
+        .catch((error) => {});
   },
   // this os after the DOM is ready...
   async asyncData() {
