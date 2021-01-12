@@ -1,13 +1,23 @@
 <template>
   <div class="container">
     <div class="large-12 medium-12 small-12 cell">
-      <label>extra
-      <input type="text" id="extra" name="extra" v-model="extra">
+      <label
+        >extra
+        <input type="text" id="extra" name="extra" v-model="extra" />
       </label>
-      <label>File
-        <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+      <label
+        >File
+        <input
+          type="file"
+          id="file"
+          ref="file"
+          v-on:change="handleFileUpload()"
+        />
       </label>
       <button v-on:click="submitFile()">Submit</button>
+      <div style="max-width: 150px">
+        <img width="150px" :src="'https://jaipur-7lpbq.ondigitalocean.app/it/' + responseImageCode">
+      </div>
     </div>
   </div>
 </template>
@@ -17,18 +27,19 @@ export default {
   /*
         Defines the data used by the component
       */
-  data(){
+  data() {
     return {
-      extra:'',
-      file: ''
-    }
+      extra: "",
+      file: "",
+      responseImageCode: ""
+    };
   },
 
   methods: {
     /*
       Submits the file to the server
     */
-    submitFile(){
+    async submitFile() {
       /*
               Initialize the form data
           */
@@ -37,37 +48,35 @@ export default {
       /*
           Add the form data we need to submit
       */
-      formData.append('file', this.file);
-      formData.append('extra', this.extra);
+      formData.append("file", this.file);
+      formData.append("extra", this.extra);
 
       /*
         Make the request to the POST /single-file URL
       */
-      this.$axios.post( process.env.SEND_IMAGES,
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }
-      ).then(function(){
-        console.log('SUCCESS!!');
-      })
-          .catch(function(){
-            console.log('FAILURE!!');
-          });
+      await this.$axios
+        .post(process.env.SEND_IMAGES, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then(response  =>  {
+          console.log(response);
+          this.responseImageCode = response.data.data.fileCode;
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
 
     /*
       Handles a change on the file upload
     */
-    handleFileUpload(){
+    handleFileUpload() {
       this.file = this.$refs.file.files[0];
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
