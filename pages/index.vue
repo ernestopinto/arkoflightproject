@@ -1,6 +1,11 @@
 <template>
   <div class="container">
     <div>
+      <div v-if="this.$auth.loggedIn">
+        <div>
+          <button v-on:click="logOut">Logout</button>
+        </div>
+      </div>
       <Logo />
       <h1 class="title">Arcadeluz</h1>
       <div class="links">
@@ -33,7 +38,12 @@ import VueRx from 'vue-rx'
 Vue.use(VueRx)
 
 export default {
-  auth: false,
+  name: "index",
+  methods: {
+    async logOut() {
+      await this.$auth.logout().then(this.$router.push({ path: "/" }));
+    },
+  }
 }
 
 </script>

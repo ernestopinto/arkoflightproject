@@ -1,5 +1,10 @@
 <template>
   <div>
+    <div v-if="this.$auth.loggedIn">
+      <div>
+        <button v-on:click="logOut">Logout</button>
+      </div>
+    </div>
     <p v-if="$fetchState.pending">getting data...</p>
     <div v-else>
       <img
@@ -19,7 +24,7 @@
 <script>
 
 export default {
-  auth: false,
+  middleware: 'authenticated',
   name: "index",
   data() {
     return {
@@ -28,6 +33,13 @@ export default {
       message: "",
       cenas: 0,
     };
+  },
+  methods: {
+    async logOut() {
+      await this.$auth.logout().then(
+          this.$router.push({ path: '/' })
+      );
+    },
   },
   async subscriptions() {},
   async fetch() {
