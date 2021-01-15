@@ -20,6 +20,7 @@
 import { mapActions } from "vuex";
 
 export default {
+  middleware: 'guest',
   data() {
     return {
       login: {
@@ -37,7 +38,8 @@ export default {
             })
             .then((response) => {
               console.log(response);
-              this.$store.dispatch('usersControl/setUser', response);
+              //this.$store.dispatch('usersControl/setUser', response);
+              this.$router.push({ path: '/home' })
             })
             .catch((error) => {
               console.log(error);

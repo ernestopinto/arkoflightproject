@@ -49,11 +49,6 @@ export default {
     BASE_URL: process.env.API_URL
   },
 
-  // case proxy needed
-  /*proxy: {
-    '/api/': { target: process.env.API_URL, pathRewrite: {'^/api/': ''}, changeOrigin: true }
-  },*/
-
   auth: {
     strategies: {
       local: {
@@ -63,6 +58,7 @@ export default {
         },
         user: {
           property: 'data.user',
+          autoFetch: true
         },
         endpoints: {
           login: { url: '/login', method: 'post' },
@@ -70,14 +66,12 @@ export default {
           user: {url: '/user', method: 'get' }
         }
       }
-    }
+    },
+    redirect: {
+      home: false
+    },
   },
 
-  // case deploying on local or award
-  router: {
-    //base: '/arcadeluz/'
-    middleware: 'auth'
-  },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
