@@ -25,13 +25,17 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
+
 import Vue from 'vue'
 import VueRx from 'vue-rx'
 
 Vue.use(VueRx)
 
-export default Vue.extend({})
+export default {
+  auth: false,
+}
+
 </script>
 
 <style>

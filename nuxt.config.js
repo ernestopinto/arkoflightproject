@@ -59,7 +59,6 @@ export default {
     '/api/': { target: process.env.API_URL, pathRewrite: {'^/api/': ''}, changeOrigin: true }
   },*/
 
-  //https://auth.nuxtjs.org/schemes/local
   auth: {
     strategies: {
       local: {
@@ -69,16 +68,20 @@ export default {
         },
         user: {
           property: 'data.user',
-          autoFetch: true
         },
         endpoints: {
           login: { url: '/login', method: 'post' },
           logout: { url: '/logout', method: 'post' },
           user: {url: '/user', method: 'get' }
-        },
-        watchLoggedIn: true
+        }
       }
     }
+  },
+
+  // case deploying on local or award
+  router: {
+    //base: '/arcadeluz/'
+    middleware: 'auth'
   },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)

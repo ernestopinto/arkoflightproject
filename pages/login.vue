@@ -17,9 +17,9 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 
 export default {
-  middleware: 'guest',
   data() {
     return {
       login: {
@@ -31,18 +31,23 @@ export default {
   methods: {
     async userLogin() {
       try {
-        let response = await this.$auth.loginWith("local", {
-          data: this.login,
-        });
-        console.log(response);
-        await this.$router.push("/dashboard");
-      } catch (err) {
-        console.log(err);
+        await this.$auth
+            .loginWith("local", {
+              data: this.login,
+            })
+            .then((response) => {
+              console.log(response);
+              this.$store.dispatch('usersControl/setUser', response);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+      } catch (e) {
+
       }
     },
   },
   mounted() {
-    console.log('logado? -> ', this.$auth.loggedIn)
   },
 };
 </script>
