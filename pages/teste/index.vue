@@ -19,6 +19,7 @@
 <script>
 
 export default {
+  auth: false,
   name: "index",
   data() {
     return {
