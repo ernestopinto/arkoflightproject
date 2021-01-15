@@ -2,11 +2,6 @@ export default {
 
   ssr: false,
 
-  // case deploying on local or award
-  /*router: {
-    base: '/arcadeluz/'
-  },*/
-
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
