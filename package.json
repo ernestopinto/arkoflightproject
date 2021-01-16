@@ -19,9 +19,11 @@
     "cookieparser": "^0.1.0",
     "core-js": "^3.6.5",
     "js-cookie": "^2.2.1",
+    "lodash": "^4.17.20",
     "nuxt": "^2.14.6",
     "rxjs": "^6.6.3",
-    "vue-rx": "^6.2.0"
+    "vue-rx": "^6.2.0",
+    "vue-underscore": "^0.1.4"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",
