@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div v-if="this.$auth.loggedIn">
-      <div>
-        <button v-on:click="logOut">Logout</button>
-      </div>
-    </div>
+    <nav-user/>
     <p v-if="$fetchState.pending">getting data...</p>
     <div v-else>
       <img
@@ -23,6 +19,9 @@
 
 <script>
 
+
+import {ApiEndPoints} from "@/env/Environment";
+
 export default {
   middleware: 'authenticated',
   name: "index",
@@ -35,16 +34,12 @@ export default {
     };
   },
   methods: {
-    async logOut() {
-      await this.$auth.logout().then(
-          this.$router.push({ path: '/' })
-      );
-    },
+
   },
   async subscriptions() {},
   async fetch() {
     await this.$axios
-        .$get(process.env.API_INFO)
+        .$get(ApiEndPoints.getApiEndPoint(ApiEndPoints.endpoints.apiInfo))
         .then((response) => {
           this.message = response.message;
           this.apiInfo = response.data.api_version;

@@ -12,12 +12,13 @@
 </template>
 
 <script>
+
 export default {
   name: "nav-user",
   methods: {
     async logOut() {
       await this.$auth.logout().then(
-          this.$router.push({ path: '/login' })
+          this.$router.push({ path: '/' })
       );
     },
   },

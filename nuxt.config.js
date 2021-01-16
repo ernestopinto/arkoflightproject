@@ -1,3 +1,4 @@
+
 export default {
 
   ssr: false,
@@ -63,6 +64,7 @@ export default {
         endpoints: {
           login: { url: '/login', method: 'post' },
           logout: { url: '/logout', method: 'post' },
+          register: { url: '/register', method: 'post' },
           user: {url: '/user', method: 'get' }
         }
       }

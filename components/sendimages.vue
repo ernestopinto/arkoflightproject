@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="large-12 medium-12 small-12 cell">
+  <div >
+    <div>
       <label
         >extra
         <input type="text" id="extra" name="extra" v-model="extra" />
@@ -16,55 +16,55 @@
       </label>
       <button v-on:click="submitFile()">Submit</button>
       <div style="max-width: 150px">
-        <img width="150px" :src="'https://jaipur-7lpbq.ondigitalocean.app/it/' + responseImageCode">
+        <img
+          width="150px"
+          :src="
+            'https://jaipur-7lpbq.ondigitalocean.app/it/' + responseImageCode
+          "
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import {ApiEndPoints} from "@/env/Environment";
+
 export default {
-  /*
-        Defines the data used by the component
-      */
+  name: "sendimages",
   data() {
     return {
       extra: "",
       file: "",
-      responseImageCode: ""
+      responseImageCode: "",
     };
   },
-
   methods: {
     /*
       Submits the file to the server
     */
     async submitFile() {
-      /*
-              Initialize the form data
-          */
       let formData = new FormData();
-
       /*
           Add the form data we need to submit
       */
       formData.append("file", this.file);
       formData.append("extra", this.extra);
-
-      /*
-        Make the request to the POST /single-file URL
-      */
       await this.$axios
-        .post(process.env.SEND_IMAGES, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then(response  =>  {
+        .post(
+          ApiEndPoints.getApiEndPoint(ApiEndPoints.endpoints.sendImage),
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .then((response) => {
           console.log(response);
           this.responseImageCode = response.data.data.fileCode;
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
