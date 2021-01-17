@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <div>
-      <div v-if="this.$auth.loggedIn">
-        <div>
-          <button v-on:click="logOut">Logout</button>
-        </div>
+      <div>
+        <client-only>
+          <div v-if="this.$auth.loggedIn">
+            <button v-on:click="logOut">Logout</button>
+          </div>
+        </client-only>
       </div>
       <Logo />
       <h1 class="title">Arcadeluz</h1>
