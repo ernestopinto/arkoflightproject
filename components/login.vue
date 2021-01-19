@@ -17,9 +17,8 @@
 </template>
 
 <script>
-
 export default {
-  middleware: 'guest',
+  name: "login",
   data() {
     return {
       login: {
@@ -47,8 +46,6 @@ export default {
 
       }
     },
-  },
-  mounted() {
   },
 };
 </script>

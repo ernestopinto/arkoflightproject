@@ -63,6 +63,7 @@ export default {
             if (helper.tools.response.error === Environment.API_ERRORS.simple) {
               // errors
               this.register_info.oklogin = false;
+              this.loading = false;
             } else {
               this.register_info.oklogin = true;
             }
@@ -78,18 +79,19 @@ export default {
                   })
                   .then((response) => {
                     console.log(response);
-                    this.loading = false;
                     //this.$store.dispatch('usersControl/setUser', response);
                     this.$router.push({ path: "/home" });
                   })
                   .catch((error) => {
                     console.log(error);
+                    this.loading = false;
                   });
             }
           })
           .catch((error) => {
             // error with code error
             console.log(error);
+            this.loading = false;
           });
       } catch (e) {}
     },

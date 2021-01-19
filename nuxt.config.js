@@ -4,6 +4,8 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
+  ssr: false,
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'Arcadeluz',
@@ -68,7 +70,9 @@ export default {
       }
     },
     redirect: {
-      home: false
+      login: '/',
+      logout: '/',
+      home:'/home'
     },
   },
 
@@ -85,4 +89,8 @@ export default {
       "@nuxtjs/auth-next",
     ]
   },
+
+  router: {
+    middleware: 'auth'
+  }
 }

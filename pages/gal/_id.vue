@@ -1,43 +1,34 @@
 <template>
   <div>
-    <nav-user/>
-    <p v-if="$fetchState.pending">getting data...</p>
-    <div v-else>
+    <nav-user />
       <img
         width="150"
         src="https://jaipur-7lpbq.ondigitalocean.app/it/XzqJz7xvi5"
       />
-      <div>
-        <p>API Info -> {{ apiInfo }}</p>
-        <p>Message -> {{ message }}</p>
-      </div>
+        <p>API Info -> {{ response.message }}</p>
+        <p>Message -> {{ response.data.api_version }}</p>
+        <p>Id -> {{ response.id }}</p>
       <br />
       <button @click="$fetch">Refresh</button>
-    </div>
   </div>
 </template>
 
 <script>
-
-
-import {ApiEndPoints} from "@/env/Environment";
+import { ApiEndPoints } from "@/env/Environment";
+import axios from "@/plugins/axios";
 
 export default {
-  middleware: 'authenticated',
   name: "index",
   data() {
     return {
-      ip: null,
+      id: null,
       apiInfo: "",
       message: "",
-      cenas: 0,
     };
   },
-  methods: {
-
-  },
+  methods: {},
   async subscriptions() {},
-  async fetch() {
+  /*async fetch(params) {
     await this.$axios
         .$get(ApiEndPoints.getApiEndPoint(ApiEndPoints.endpoints.apiInfo))
         .then((response) => {
@@ -45,10 +36,14 @@ export default {
           this.apiInfo = response.data.api_version;
         })
         .catch((error) => {});
-  },
+  },*/
   // this os after the DOM is ready...
-  async asyncData() {
-    //
+  async asyncData({ params, $axios }) {
+    const response = await $axios
+      .$get(ApiEndPoints.getApiEndPoint(ApiEndPoints.endpoints.apiInfo))
+      .catch((error) => {});
+    response.id = params.id;
+    return { response };
   },
 };
 </script>
