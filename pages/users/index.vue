@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  auth: false,
   name: "index",
 };
 </script>

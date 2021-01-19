@@ -28,6 +28,12 @@
           GitHub
         </a>
       </div>
+      <br/>
+      <div v-if="!this.$auth.loggedIn">
+        <login/>
+        <br/>
+        <register/>
+      </div>
     </div>
   </div>
 </template>
@@ -40,6 +46,7 @@ import VueRx from 'vue-rx'
 Vue.use(VueRx);
 
 export default {
+  auth: false,
   name: "index",
   methods: {
     async logOut() {

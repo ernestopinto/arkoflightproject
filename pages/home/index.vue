@@ -11,7 +11,6 @@
 <script>
 
 export default {
-  middleware: "authenticated",
   name: "index",
   methods: {
   },
