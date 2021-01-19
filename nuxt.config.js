@@ -1,4 +1,7 @@
 
+import axios from 'axios'
+import {ApiEndPoints} from "~/env/Environment";
+
 export default {
 
   // Target (https://go.nuxtjs.dev/config-target)
@@ -92,5 +95,10 @@ export default {
 
   router: {
     middleware: 'auth'
+  },
+
+  generate: {
+    routes: ['/gal/1', '/gal/2', '/gal/3']
   }
+
 }
