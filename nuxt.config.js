@@ -84,7 +84,14 @@ export default {
   content: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    /*
+   ** You can extend webpack config here
+   */
+    extend (config, ctx) {
+      config.performance.maxAssetSize = 700 * 1024
+    }
+  },
 
   //https://auth.nuxtjs.org/guide/setup
   compilerOptions: {
@@ -99,7 +106,7 @@ export default {
 
   generate: {
     routes() {
-      return axios.get(process.env.API_URL + '/imgs').then(res => {
+      return axios.get(process.env.API_URL + '/nuxtdeckardimages').then(res => {
         return res.data.map(images => {
           return '/image/' + images.code
         })
