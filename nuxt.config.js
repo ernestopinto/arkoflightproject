@@ -1,7 +1,5 @@
 
 import axios from 'axios'
-import {map} from "rxjs/operators";
-import {ApiEndPoints} from "~/env/Environment";
 
 export default {
 
@@ -102,14 +100,19 @@ export default {
   },
 
   router: {
+    base: '/arcadeluz/',
     middleware: 'auth'
   },
 
   generate: {
+    interval: 100,
     routes() {
       return axios.get(process.env.API_URL + '/nuxtdeckardimages').then(res => {
-        return res.data.data.map(images => {
-          return '/image/' + images.code
+        return res.data.data.map(image => {
+          return {
+            route: '/image/' + image.id,
+            payload: image
+          }
         })
       })
     }

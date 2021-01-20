@@ -35,6 +35,7 @@ export default {
   methods: {},
   async subscriptions() {},
   /*async fetch(params) {
+
     await this.$axios
         .$get(ApiEndPoints.getApiEndPoint(ApiEndPoints.endpoints.apiInfo))
         .then((response) => {
@@ -44,7 +45,8 @@ export default {
         .catch((error) => {});
   },*/
   // this os after the DOM is ready...
-  async asyncData({ params, $axios }) {
+  async asyncData({ hash, $axios }) {
+    console.log('hash->', hash)
     const response = await $axios
       .$get(
         ApiEndPoints.getApiEndPoint(ApiEndPoints.endpoints.getImageByCode) +
