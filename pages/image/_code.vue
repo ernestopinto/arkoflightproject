@@ -24,7 +24,7 @@ import { ApiEndPoints } from "@/env/Environment";
 import axios from "@/plugins/axios";
 
 export default {
-  name: "_code",
+  name: "index",
   data() {
     return {
       id: null,
