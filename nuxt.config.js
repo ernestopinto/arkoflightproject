@@ -100,7 +100,6 @@ export default {
   },
 
   router: {
-    base: '/arcadeluz/',
     middleware: 'auth'
   },
 
