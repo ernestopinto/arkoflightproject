@@ -23,7 +23,7 @@
           "
         />
         <p> Code: {{responseImageCode}} </p>
-        <router-link :to="'/image/' + responseImageCode">See Image >>></router-link>
+        <router-link :to="'/anouncer/#' + responseImageCode">See Image >>></router-link>
       </div>
     </div>
   </div>
