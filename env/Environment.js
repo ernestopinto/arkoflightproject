@@ -16,9 +16,12 @@ export class ApiEndPoints {
   static base = process.env.API_URL;
 
   static endpoints = {
+    imageThumb: "it",
+    imageFull: "if",
     apiInfo: "apiinfo",
     registerUser: "register",
     userInfo: "user",
     sendImage: "sendImage",
+    getImageByCode: "img"
   };
 }

@@ -98,7 +98,13 @@ export default {
   },
 
   generate: {
-    routes: ['/gal/1', '/gal/2', '/gal/3']
+    routes() {
+      return axios.get(process.env.API_URL + '/imgs').then(res => {
+        return res.data.map(images => {
+          return '/image/' + images.code
+        })
+      })
+    }
   }
 
 }

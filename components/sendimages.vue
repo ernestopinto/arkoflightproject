@@ -22,6 +22,8 @@
             'https://jaipur-7lpbq.ondigitalocean.app/it/' + responseImageCode
           "
         />
+        <p> Code: {{responseImageCode}} </p>
+        <router-link :to="'/image/' + responseImageCode">See Image >>></router-link>
       </div>
     </div>
   </div>
