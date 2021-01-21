@@ -4,6 +4,7 @@
       <div>
         <client-only>
           <div v-if="this.$auth.loggedIn">
+            <p>{{ this.$auth.user.name }}</p><br/>
             <button v-on:click="logOut">Logout</button>
           </div>
         </client-only>

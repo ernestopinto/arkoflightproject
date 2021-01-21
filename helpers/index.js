@@ -5,28 +5,38 @@ import {Environment} from "~/env/Environment";
 export class Helpers {
   response;
 
-  constructor(operator) {
-    this.response = operator.arkResponse();
-  }
-
-  isNotNullOrUndifined(value) {
+  static isNotNullOrUndifined(value) {
     return !!(_.isUndefined(value) || _.isNull(value));
   }
 
-  isNotNullOrUndifinedOrEmpty(value) {
+  static isNotNullOrUndifinedOrEmpty(value) {
     return !!(_.isUndefined(value) || _.isNull(value) || value === "");
   }
+
+  static getHashSlug($route){
+    return $route.hash.split("#")[1]
+  }
+
+  static displayErrors(errors){
+    let out = '';
+    for (let s of errors){
+      out += s + '\r';
+    }
+    return out;
+  }
+
 }
 
 export class HelpersFactory {
+
   tools;
 
   constructor(response) {
     this.tools = new Helpers(new ResponseOperators(response));
   }
 
-  verifyResponse() {
-    const response = this.tools.response;
+  static verifyResponse() {
+    const response = this.tools._response;
     if (
       response.error !== Environment.API_ERRORS.simple &&
       this.tools.isNotNullOrUndifined(response)

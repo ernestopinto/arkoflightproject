@@ -22,6 +22,7 @@ export class ApiEndPoints {
     registerUser: "register",
     userInfo: "user",
     sendImage: "sendImage",
-    getImageByCode: "img"
+    getImageByCode: "img",
+    getImages: "imgs"
   };
 }

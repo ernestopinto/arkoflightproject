@@ -16,7 +16,7 @@
       </label>
       <button v-on:click="submitFile()">Submit</button>
       <div style="max-width: 150px">
-        <img
+        <img v-if="responseImageCode !== ''"
           width="150px"
           :src="
             'https://jaipur-7lpbq.ondigitalocean.app/it/' + responseImageCode
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import {ApiEndPoints} from "@/env/Environment";
+import {ArkServices} from "@/services";
 
 export default {
   name: "sendimages",
@@ -52,23 +52,12 @@ export default {
       */
       formData.append("file", this.file);
       formData.append("extra", this.extra);
-      await this.$axios
-        .post(
-          ApiEndPoints.getApiEndPoint(ApiEndPoints.endpoints.sendImage),
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        )
-        .then((response) => {
-          console.log(response);
-          this.responseImageCode = response.data.data.fileCode;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+
+      await new ArkServices(this.$axios).sendImageWithData(formData, (response) => {
+        console.log(response);
+        this.responseImageCode = response.fileCode;
+      })
+
     },
 
     /*
