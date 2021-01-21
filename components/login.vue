@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import {Helpers} from "@/helpers";
+
 export default {
   name: "login",
   data() {
@@ -35,12 +37,14 @@ export default {
               data: this.login,
             })
             .then((response) => {
-              console.log(response);
-              //this.$store.dispatch('usersControl/setUser', response);
-              this.$router.push({ path: '/home' })
+              if (response.data.error?.length > 0){
+                alert(Helpers.displayErrors(response.data.error));
+              } else {
+                this.$router.push({ path: '/home' })
+              }
             })
             .catch((error) => {
-              console.log(error);
+              alert(error);
             });
       } catch (e) {
 

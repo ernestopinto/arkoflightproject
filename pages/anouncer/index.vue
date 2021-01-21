@@ -1,38 +1,37 @@
 <template>
+
   <div style="padding: 40px">
-    <img v-if="!$fetchState.pending"
+    <img v-if="!$fetchState.pending && this.imageData.code !== 0"
       width="600px"
-      v-bind:src="'https://jaipur-7lpbq.ondigitalocean.app/if/' + response.data.code"
-    />
+      v-bind:src="'https://jaipur-7lpbq.ondigitalocean.app/it/' + this.imageData.code"
+     alt="imagem"/>
     <br />
+    <router-link :to="'/home'"> <<< </router-link>
   </div>
 </template>
 
 <script>
-import { ApiEndPoints } from "@/env/Environment";
+import {Helpers} from "@/helpers";
+import {ArkServices} from "@/services";
+
 
 export default {
   name: "index",
   data() {
     return {
-      teste: null,
-      response: null,
-    };
+      imageData: null
+    }
   },
   async fetch() {
-    console.log("slug -> ",this.$route.hash.split("#")[1]);
-    await this.$axios
-      .$get(
-        ApiEndPoints.endpoints.getImageByCode +
-          `/${this.$route.hash.split("#")[1]}`
-      )
-      .then((response) => {
-        this.response = response;
-        console.log(this.response);
-        this.message = response.message;
-        this.apiInfo = response.data.api_version;
+    if (!Helpers.isNotNullOrUndifinedOrEmpty(this.$route.hash)){
+      await new ArkServices(this.$axios).getImageData(Helpers.getHashSlug(this.$route), (response) => {
+        this.imageData = response;
       })
-      .catch((error) => {});
+    } else {
+      this.imageData = {
+        code: 0
+      }
+    }
   },
   mounted() {},
 };

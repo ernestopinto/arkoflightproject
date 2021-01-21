@@ -39,9 +39,7 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/auth-next',
     '@nuxtjs/proxy',
@@ -100,21 +98,9 @@ export default {
   },
 
   router: {
+    //base: '/arcadeluz/',
     middleware: 'auth'
   },
 
-  generate: {
-    interval: 100,
-    routes() {
-      return axios.get(process.env.API_URL + '/nuxtdeckardimages').then(res => {
-        return res.data.data.map(image => {
-          return {
-            route: '/image/' + image.id,
-            payload: image
-          }
-        })
-      })
-    }
-  }
 
 }

@@ -1,5 +1,3 @@
-import {_} from "lodash";
-import {pluck} from "rxjs/operators";
 
 export class ResponseOperators {
 
@@ -11,13 +9,7 @@ export class ResponseOperators {
     }
 
     arkResponse(){
-        return this._response.data
-    }
-
-    pluckStream(prop){
-        return {
-            result: pluck(prop)
-        }
+        return this._response
     }
 
 }
