@@ -3,7 +3,7 @@
     <div>
       <label
         >extra
-        <input type="text" id="extra" name="extra" v-model="group" />
+        <input type="text" id="group" name="group" v-model="group" />
       </label>
       <label
         >File

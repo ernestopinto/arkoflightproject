@@ -6,8 +6,6 @@
       <sendimages />
     </div>
 
-    <ark-image :imageData="this.imageProps" />
-
     <div v-if="$fetchState.pending">
       <h1><b>loading...</b></h1>
     </div>
@@ -38,12 +36,7 @@ export default {
   data() {
     return {
       images: [],
-      sizeImages: Environment.IMAGES_SIZE.thumb,
-      imageProps: {
-        code: 'uPvJlVd4qk',
-        size: Environment.IMAGES_SIZE.thumb,
-        withImage: 300
-      }
+      sizeImages: Environment.IMAGES_SIZE.thumb
     };
   },
   methods: {},
