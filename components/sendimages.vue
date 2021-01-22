@@ -3,7 +3,7 @@
     <div>
       <label
         >extra
-        <input type="text" id="extra" name="extra" v-model="extra" />
+        <input type="text" id="extra" name="extra" v-model="group" />
       </label>
       <label
         >File
@@ -36,7 +36,7 @@ export default {
   name: "sendimages",
   data() {
     return {
-      extra: "",
+      group: "",
       file: "",
       responseImageCode: "",
     };
@@ -51,7 +51,7 @@ export default {
           Add the form data we need to submit
       */
       formData.append("file", this.file);
-      formData.append("extra", this.extra);
+      formData.append("group", this.group);
 
       await new ArkServices(this.$axios).sendImageWithData(formData, (response) => {
         console.log(response);

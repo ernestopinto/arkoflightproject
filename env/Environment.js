@@ -4,6 +4,11 @@ export class Environment {
     calculations: 2,
     critical: 3,
   };
+
+  static IMAGES_SIZE = {
+    thumb: 0,
+    full: 1
+  }
 }
 
 export class ApiEndPoints {
