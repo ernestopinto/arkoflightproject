@@ -43,6 +43,7 @@ export default {
     '@nuxt/content',
     '@nuxtjs/auth-next',
     '@nuxtjs/proxy',
+    'bootstrap-vue/nuxt'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
