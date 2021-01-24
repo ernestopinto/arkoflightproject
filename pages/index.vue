@@ -31,9 +31,9 @@
       </div>
       <br/>
       <div v-if="!this.$auth.loggedIn">
-        <login/>
+        <Login/>
         <br/>
-        <register/>
+        <Register/>
       </div>
     </div>
   </div>

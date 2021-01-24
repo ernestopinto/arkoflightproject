@@ -14,7 +14,7 @@ export class Helpers {
   }
 
   static getHashSlug($route){
-    return $route.hash.split("#")[1]
+    return $route.hash.split("#/")[1]
   }
 
   static displayErrors(errors){

@@ -1,53 +1,39 @@
-// memory state
-
-export default {
-  state: () => {
-    return {
-      counter: 0,
-    };
+export const state = () => ({
+  op: 0,
+  payload: {
+    code: '',
+    value: 0
   },
-};
+  processing: {
+    loader: false,
+    blocking: false
+  },
+  interface: {
+    nav: {
+      userUp: '',
+      warning: {
+        message: '',
+        color: '#000'
+      }
+    },
+    body : {
+      signal: 0,
+      message: ''
+    }
+  }
+});
 
 export const mutations = {
-  INC_COUNTER(state) {
-    state.counter++;
+  //
+  setPayload (state, payload){
+    this.state.payload = payload;
   },
-
-  DEC_CONTER(state) {
-    state.counter--;
+  setValuePayload (state, value){
+    this.state.payload = { ... value}
   },
-
-  CLEAR_COUNTER: (state) => {
-    state.counter = 0;
-  },
-
-  SET_COUNTER: (state, value) => {
-    state.counter = value;
-  },
+  setProcessing (state, loader){
+    this.state.processing = {... loader}
+  }
+  //
 };
 
-export const actions = {
-  incCounter({ commit }) {
-    commit("INC_COUNTER");
-  },
-
-  decCounter({ commit }) {
-    commit("DEC_CONTER");
-  },
-
-  clearCounter({ commit }) {
-    commit("CLEAR_COUNTER");
-  },
-
-  setCounter({ commit }, value) {
-    commit("CLEAR_COUNTER", value);
-  },
-};
-
-export const getters = {
-
-    getCounter (state) {
-        return state.counter;
-    }
-
-}
