@@ -3,7 +3,7 @@
     <div class="loading-page" v-if="loading">
       <p>Loading...</p>
     </div>
-    <form @submit.prevent="Register">
+    <form @submit.prevent="register">
       <div>
         <label>Nmae</label>
         <input type="text" v-model="register_info.name" />
