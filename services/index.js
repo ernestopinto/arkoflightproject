@@ -7,6 +7,18 @@ export class ArkServices extends ServicesConstants{
         super (axios)
     }
 
+    // asyncData fetch
+
+    async _getImages(){
+        return await this.get(`${ApiEndPoints.endpoints.getImages}`).then(response => { return response})
+    }
+
+    async _getImagesByCode(code){
+       return await this.get(`${ApiEndPoints.endpoints.getImageByCode}/${code}`).then(response => { return response})
+    }
+
+    //
+
     // services
 
     async getImageData (code, result){

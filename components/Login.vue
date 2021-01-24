@@ -20,7 +20,7 @@
 import {Helpers} from "@/helpers";
 
 export default {
-  name: "login",
+  name: "Login",
   data() {
     return {
       login: {

@@ -3,7 +3,7 @@
     <div class="loading-page" v-if="loading">
       <p>Loading...</p>
     </div>
-    <form @submit.prevent="register">
+    <form @submit.prevent="Register">
       <div>
         <label>Nmae</label>
         <input type="text" v-model="register_info.name" />
@@ -33,7 +33,7 @@ import { ApiEndPoints, Environment } from "@/env/Environment";
 import { ArkServices } from "@/services";
 
 export default {
-  name: "register",
+  name: "Register",
   data() {
     return {
       register_info: {

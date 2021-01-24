@@ -54,8 +54,11 @@ export default {
       formData.append("group", this.group);
 
       await new ArkServices(this.$axios).sendImageWithData(formData, (response) => {
-        console.log(response);
         this.responseImageCode = response.fileCode;
+        this.$store.commit('setPayload', {
+          code: 10,
+          value: 'reload'
+        })
       })
 
     },
