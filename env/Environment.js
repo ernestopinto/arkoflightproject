@@ -9,6 +9,12 @@ export class Environment {
     thumb: 0,
     full: 1
   }
+
+  static OP_CODES = {
+    ready: 0,
+    refresh: 1,
+  }
+
 }
 
 export class ApiEndPoints {

@@ -1,8 +1,9 @@
+import {Environment} from "~/env/Environment";
+
 export const state = () => ({
-  op: 0,
   payload: {
     code: '',
-    value: 0
+    value: Environment.OP_CODES.ready
   },
   processing: {
     loader: false,

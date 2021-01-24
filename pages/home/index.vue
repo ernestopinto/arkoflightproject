@@ -38,7 +38,7 @@ export default {
       },
       (newValue, oldValue) => {
         //something changed do something
-        if (newValue === 10) {
+        if (newValue === Environment.OP_CODES.refresh) {
           console.log("re-fetch");
           this.$fetch()
         }
