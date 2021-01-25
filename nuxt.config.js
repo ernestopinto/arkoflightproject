@@ -81,11 +81,16 @@ export default {
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
 
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    /*
-   ** You can extend webpack config here
-   */
+    extractCSS: true,
+    filenames: {
+      app: ({ isDev }) => isDev ? '[name].js' : '[contenthash].js',
+      chunk: ({ isDev }) => isDev ? '[name].js' : '[contenthash].js',
+      css: ({ isDev }) => isDev ? '[name].css' : '[contenthash].css',
+      img: ({ isDev }) => isDev ? '[path][name].[ext]' : 'img/[contenthash:7].[ext]',
+      font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[contenthash:7].[ext]',
+      video: ({ isDev }) => isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
+    },
     extend (config, ctx) {
       config.performance.maxAssetSize = 700 * 1024
     }
