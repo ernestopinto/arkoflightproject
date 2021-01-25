@@ -7,8 +7,27 @@ export class Environment {
 
   static IMAGES_SIZE = {
     thumb: 0,
-    full: 1
-  }
+    full: 1,
+  };
+
+  static OP_CODES = {
+    ready: 0,
+    refresh: 1,
+    reFetchData: 2,
+  };
+
+  static CRUD_CODES = {
+    create: 0,
+    insert: 1,
+    update: 2,
+    delete: 3,
+  };
+
+  static COMPONENT_CODES = {
+    default: 0,
+    playground_arkImage: 1,
+    send_images: 2,
+  };
 }
 
 export class ApiEndPoints {
@@ -28,6 +47,6 @@ export class ApiEndPoints {
     userInfo: "user",
     sendImage: "sendImage",
     getImageByCode: "img",
-    getImages: "imgs"
+    getImages: "imgs",
   };
 }

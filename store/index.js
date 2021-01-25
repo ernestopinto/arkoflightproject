@@ -1,39 +1,37 @@
+
+
 export const state = () => ({
-  op: 0,
-  payload: {
-    code: '',
-    value: 0
+  transmit: {
+    fromComponentCode: 0,
+    payload: null,
+    valid: false,
   },
   processing: {
     loader: false,
-    blocking: false
+    blocking: false,
   },
   interface: {
     nav: {
-      userUp: '',
+      userUp: "",
       warning: {
-        message: '',
-        color: '#000'
-      }
+        message: "",
+        color: "#000",
+      },
     },
-    body : {
+    body: {
       signal: 0,
-      message: ''
-    }
-  }
+      message: "",
+    },
+  },
 });
 
 export const mutations = {
   //
-  setPayload (state, payload){
+  setPayload(state, payload) {
     this.state.payload = payload;
   },
-  setValuePayload (state, value){
-    this.state.payload = { ... value}
-  },
-  setProcessing (state, loader){
-    this.state.processing = {... loader}
+  transmit (state, component){
+    this.state.transmit = component;
   }
   //
 };
-

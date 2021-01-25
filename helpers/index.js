@@ -6,11 +6,11 @@ export class Helpers {
   response;
 
   static isNotNullOrUndifined(value) {
-    return !!(_.isUndefined(value) || _.isNull(value));
+    return (value !== undefined && value !== null)
   }
 
   static isNotNullOrUndifinedOrEmpty(value) {
-    return !!(_.isUndefined(value) || _.isNull(value) || value === "");
+    return (value !== '' && value !== undefined && value !== null)
   }
 
   static getHashSlug($route){

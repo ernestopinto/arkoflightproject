@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <p>mode: {{ ImagesLoad.mode }}</p>
+     <!--<p>mode: {{ ImagesLoad.mode }}</p>-->
       <table>
         <tr v-for="im in ImagesLoad.images">
           <td v-if="ImagesLoad.mode === 0">
@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import { ArkServices } from "@/services";
 import { ApiEndPoints } from "@/env/Environment";
 
 export default {
