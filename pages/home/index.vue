@@ -34,13 +34,15 @@ export default {
   mounted() {
     this.$store.watch(
       (state) => {
-        return this.$store.state.payload.code; // could also put a Getter here
+        return state.transmit; // could also put a Getter here
       },
-      (newValue, oldValue) => {
+      (transmit, legacy) => {
         //something changed do something
-        if (newValue === Environment.OP_CODES.refresh) {
-          console.log("re-fetch");
-          this.$fetch()
+        if (
+          transmit.fromComponentCode === Environment.COMPONENT_CODES.send_images &&
+          transmit.payload === Environment.OP_CODES.refresh
+        ) {
+          this.$fetch();
         }
       },
       //Optional Deep if you need it

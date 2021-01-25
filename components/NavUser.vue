@@ -1,9 +1,5 @@
 <template>
   <div>
-    <div v-if="this.$store.state.payload.code !== 0">
-     Value: {{this.$store.state.payload.value}}
-    </div>
-    ***{{this.$store.state.processing.loader}}****
     <span v-if="this.$store.state.processing.loader"> ...processing</span>
     <div v-if="this.$auth.loggedIn">
       <button v-on:click="logOut">Logout</button>

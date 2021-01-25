@@ -31,6 +31,7 @@
 
 <script>
 import {ArkServices} from "@/services";
+import {Environment} from "@/env/Environment";
 
 export default {
   name: "sendimages",
@@ -55,9 +56,9 @@ export default {
 
       await new ArkServices(this.$axios).sendImageWithData(formData, (response) => {
         this.responseImageCode = response.fileCode;
-        this.$store.commit('setPayload', {
-          code: 10,
-          value: 'reload'
+        this.$store.commit('transmit', {
+          fromComponentCode: Environment.COMPONENT_CODES.send_images,
+          payload: Environment.OP_CODES.refresh
         })
       })
 
